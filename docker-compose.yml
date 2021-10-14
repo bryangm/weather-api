@@ -1,0 +1,14 @@
+version: '2.4'
+services:
+  api:
+    image: weather-api
+    ports:
+      - "8080:80"
+      - "8443:443"
+    environment:
+      - ASPNETCORE_URLS=https://+;http://+
+      - ASPNETCORE_HTTPS_PORT=8443
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=Upmc1234
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/WeatherApi.pfx
+    volumes:
+      - ~/.aspnet/https:/https/
